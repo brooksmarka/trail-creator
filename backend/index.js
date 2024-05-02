@@ -1,11 +1,12 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(express.json());
+app.use(cors());
 
 // Route to handle NPI searches
 app.get('/search', async (req, res) => {
