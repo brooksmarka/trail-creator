@@ -1,44 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
+import SearchParams from '../types.ts';
+import SearchForm from './SearchForm.tsx';
+import ProviderList from './ProviderList.tsx'
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
 
-  const fetchData = async () => {
-    const queryParams = new URLSearchParams({
-      firstName: "",
-      lastName: "",
-      npiNumber: "",
-      taxonomy: "",
-      city: "",
-      state: "",
-      zip: "80215"
-    }).toString();
+  const handleSearch = async (searchParams: SearchParams) => {
+    const filteredParams: Record<string, string> = Object.fromEntries(
+      Object.entries(searchParams).filter(([_, value]) => value !== undefined)
+    );
+
+    const queryParams = new URLSearchParams(filteredParams).toString();
 
     try {
       const response = await fetch(`http://localhost:3001/search?${queryParams}`);
       const jsonData = await response.json();
-      console.log(jsonData);
+      console.log("this is the ddata",jsonData);
       setData(jsonData);
     } catch (err){
     console.error("Error fetching data", err)
     }
   }
 
-  useEffect(() => {
-    fetchData()
-  }, [])
-
   return (
+    
     <div>
       <h1>NPI Search</h1>
-      {data ? (
-        <div>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        </div>
-      ) : (
-        <p>No data found</p>
-      )}
+      <SearchForm onSearch={handleSearch} />
+      <ProviderList data={data?.results} />
     </div>
   );
 }
