@@ -1,0 +1,19 @@
+{
+  "name": "npi-search-app",
+  "private": true,
+  "version": "1.0.0",
+  "description": "An app to search npi data",
+  "main": "index.js",
+  "workspaces": [
+    "backend", 
+    "frontend"
+  ],
+  "scripts": {
+    "start-backend": "cd backend && yarn start", 
+    "start-frontend": "cd frontend && yarn dev",
+    "dev": "concurrently \"yarn start-backend\" \"yarn start-frontend\"",
+    "install": "yarn workspace backend install && yarn workspace frontend install"
+  },
+  "author": "Mark Brooks <markabrooks@gmail.com>",
+  "license": "MIT"
+}
