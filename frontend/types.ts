@@ -2,24 +2,31 @@ export default interface SearchParams {
     firstName?: string;
     lastName?: string;
     npiNumber?: string;
-    taxonomy?: string;
+    taxonomies?: Taxonomy[];
     city?: string;
     state?: string;
     zip?: string;
   }
 
-interface ProviderData {
-    number: string; // NPI number
+export default interface ProviderData {
+    number: string;
     basic: {
       first_name: string;
       last_name: string;
+      organization_name?: string;
     };
-    addresses: {
-      city: string;
-      state: string;
-    }[];
+    addresses: Address[];
   }
   
-export default interface ProviderListProps {
-    data: ProviderData[];
-  }
+interface Address {
+    city: string;
+    state: string;
+    address_purpose: string;
+    address_1: string;
+    postal_code: string;
+    telephone_number: string;
+}
+
+interface Taxonomy {
+    desc: string;
+}

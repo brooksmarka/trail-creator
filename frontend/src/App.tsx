@@ -3,6 +3,7 @@ import './App.css'
 import SearchParams from '../types.ts';
 import SearchForm from './SearchForm.tsx';
 import ProviderList from './ProviderList.tsx'
+import { Typography } from '@mui/material';
 
 function App() {
   const [data, setData] = useState<any>(null);
@@ -27,7 +28,7 @@ function App() {
   return (
     
     <div>
-      <h1>NPI Search</h1>
+      <Typography variant="h6">NPI Search App</Typography>
       <SearchForm onSearch={handleSearch} />
       <ProviderList data={data?.results} />
     </div>

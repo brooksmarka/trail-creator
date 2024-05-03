@@ -22,6 +22,7 @@ app.get('/search', async (req, res) => {
                 city,
                 state,
                 postal_code: zip,
+                limit: 50,
                 version: '2.1'
             }
         });

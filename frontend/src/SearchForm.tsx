@@ -26,9 +26,9 @@ function SearchForm({ onSearch }) {
   };
 
   return (
-    <Container component="main" maxWidth="sm">
+    <Container component="main" maxWidth="sm" >
         <Typography variant="h6" gutterBottom>
-            NPI Registry Search
+            Search the NPI Registry
         </Typography>
       <form onSubmit={handleSubmit}>
         <Box sx={{ '& .MuiTextField-root': { m: .5, width: '100%' } }}>
@@ -74,7 +74,7 @@ function SearchForm({ onSearch }) {
             value={formData.zip}
             onChange={handleChange}
           />
-          <Button type="submit">
+          <Button type="submit" variant="contained" >
             Search
           </Button>
         </Box>
