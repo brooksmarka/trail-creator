@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { TextField, Button, Container, Box, Typography } from '@mui/material';
+import { SearchFormProps } from '../../types';
 
-function SearchForm({ onSearch }) {
+
+function SearchForm({ onSearch }: SearchFormProps) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -31,7 +33,7 @@ function SearchForm({ onSearch }) {
             Search the NPI Registry
         </Typography>
       <form onSubmit={handleSubmit}>
-        <Box sx={{ '& .MuiTextField-root': { m: .5, width: '100%' } }}>
+        <Box sx={{ '& .MuiTextField-root': { m: .5, width: '100%' },display: 'flex', flexDirection: 'column', }}>
           <TextField
             label="First Name"
             name="firstName"
@@ -57,24 +59,27 @@ function SearchForm({ onSearch }) {
             onChange={handleChange}
           />
           <TextField
+            fullWidth 
             label="City"
             name="city"
             value={formData.city}
             onChange={handleChange}
           />
           <TextField
+            fullWidth 
             label="State"
             name="state"
             value={formData.state}
             onChange={handleChange}
           />
           <TextField
+            fullWidth 
             label="ZIP Code"
             name="zip"
             value={formData.zip}
             onChange={handleChange}
           />
-          <Button type="submit" variant="contained" >
+          <Button fullWidth sx={{mt:1, ml:.5}} type="submit" variant="contained" >
             Search
           </Button>
         </Box>
