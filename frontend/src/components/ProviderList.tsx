@@ -24,7 +24,8 @@ const ProviderList = ({ data }: ProviderListProps) => {
         <>
             {!data || data.length === 0 ? (
                 <Typography variant="body1" align="center" sx={{ marginTop: 2 }}>
-                    No results found.  Please try your search again.
+                    No results found.  Please try your search again.<br/>
+                    Note: The NPI Registry limits searches to the first 2100 results. If you cannot find the NPI that you are looking for, please refine the search.
                 </Typography>
             ) : (
                 <ProviderTable data={data} handleClickOpen={handleClickOpen} />

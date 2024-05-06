@@ -33,9 +33,11 @@ To run both the frontend and backend run:
     ```
 The backend will start at `http://localhost:3001` and the frontend will be available at `http://localhost:5173/`.
 
-## Environment Variables
+Navigate to `http://localhost:5173/` to view the app.
 
-Create a `.env` file in the `backend` directory with the following:
+## Environment Variables (optional)
+
+While not required you can create a `.env` file in the `backend` directory with the following:
     ```bash
     PORT=3001
     ```
