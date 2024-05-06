@@ -4,6 +4,11 @@ import { SearchFormProps } from '../../types';
 
 
 function SearchForm({ onSearch }: SearchFormProps) {
+
+  const isValidState = (state:string) => state.length ==2 && /^[a-zA-Z]+$/.test(state);
+  const isValidZip = (zip:string) => /^\d{5}(-\d{4})?$/.test(zip);
+  const isValidNpiNumber = (npi:string) => /^\d{10}$/.test(npi);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -14,17 +19,43 @@ function SearchForm({ onSearch }: SearchFormProps) {
     zip: ''
   });
 
+  const [errors, setErrors] = useState({
+    state: false,
+    zip: false,
+    npiNumber: false
+  })
+
   const handleChange = (event: { target: { name: string; value: string; }; }) => {
     const { name, value } = event.target;
     setFormData(prevState => ({
       ...prevState,
       [name]: value
     }));
+
+    // Some input validations
+    let error = false;
+    if(value.trim() !== ''){
+      if(name === 'state') error = !isValidState(value)
+      else if (name ==='zip') error = !isValidZip(value)
+      else if (name ==='npiNumber') error = !isValidNpiNumber(value)
+    }
+
+    setErrors(prev => ({
+      ...prev,
+      [name]: error
+    }))
+
   };
 
   const handleSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    onSearch(formData);
+
+    if (!errors.state && !errors.zip && !errors.npiNumber) {
+      onSearch(formData);
+    } else {
+      alert("Please correct errors in the form")
+    }
+    
   };
 
   return (
@@ -51,6 +82,8 @@ function SearchForm({ onSearch }: SearchFormProps) {
             name="npiNumber"
             value={formData.npiNumber}
             onChange={handleChange}
+            error={errors.npiNumber}
+            helperText={errors.npiNumber ? "NPI Number must be 10 digits." : ""}
           />
           <TextField
             label="Taxonomy Description"
@@ -71,6 +104,8 @@ function SearchForm({ onSearch }: SearchFormProps) {
             name="state"
             value={formData.state}
             onChange={handleChange}
+            error={errors.state}
+            helperText={errors.state ? "State must be 2 letters." : ""}
           />
           <TextField
             fullWidth 
@@ -78,6 +113,8 @@ function SearchForm({ onSearch }: SearchFormProps) {
             name="zip"
             value={formData.zip}
             onChange={handleChange}
+            error={errors.zip}
+            helperText={errors.zip ? "ZIP must be 5 digits" : ""}
           />
           <Button fullWidth sx={{mt:1, ml:.5}} type="submit" variant="contained" >
             Search
