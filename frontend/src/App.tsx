@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import { SearchParams, ResponseData } from '../types.ts';
 import SearchForm from './components/SearchForm.tsx';
 import ProviderList from './components/ProviderList.tsx'
