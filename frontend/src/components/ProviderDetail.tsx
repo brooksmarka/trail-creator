@@ -1,4 +1,4 @@
-import { Typography, Dialog, DialogTitle, DialogContent, DialogContentText, Button, Link } from '@mui/material';
+import { Typography, Dialog, DialogTitle, DialogContent, Button } from '@mui/material';
 import ListAddresses from './ListAddresses';
 import ListEndpoints from './ListEndpoints';
 import { ProviderDetailProps } from '../../types'
@@ -9,7 +9,6 @@ const ProviderDetail = ({ provider, handleClose, open}: ProviderDetailProps) => 
         <Dialog open={open} onClose={handleClose} fullWidth maxWidth='lg'>
             <DialogTitle>Provider Details</DialogTitle>
             <DialogContent>
-                <DialogContentText>
                     <Typography variant="h6">Name: {provider.basic.organization_name || `${provider.basic.first_name} ${provider.basic.last_name}`}</Typography>
                     <Typography variant="subtitle1">NPI Number: {provider.number}</Typography>
                     <Typography variant="subtitle1">NPI Type: {provider.enumeration_type}</Typography>
@@ -30,11 +29,11 @@ const ProviderDetail = ({ provider, handleClose, open}: ProviderDetailProps) => 
                         Addresses
                     </Typography>
                     <ListAddresses addresses = {provider.addresses} />
-                    <Typography variant ="h6">
+                    <Typography variant="h6">
                         Secondary Addresses
                     </Typography>
                     <ListAddresses addresses={provider.practiceLocations} /> 
-                    <Typography variant="h6" >
+                    <Typography variant="h6">
                         Authorized Official Information
                     </Typography>
                     <Typography variant="body2" gutterBottom>
@@ -44,7 +43,7 @@ const ProviderDetail = ({ provider, handleClose, open}: ProviderDetailProps) => 
                         <br />
                         Phone: {provider.basic.authorized_official_telephone_number}
                     </Typography>
-					<Typography variant = "h6">Health Information Exchange</Typography>
+					<Typography variant="h6">Health Information Exchange</Typography>
 					<ListEndpoints endpoints={provider.endpoints}/>
 					<Typography variant="h6">
                         Other Identifiers
@@ -55,7 +54,7 @@ const ProviderDetail = ({ provider, handleClose, open}: ProviderDetailProps) => 
                             {id.state ? ` - State: ${id.state}` : ''}
                         </Typography>
                     ))}
-                    <Typography variant="h6" >
+                    <Typography variant="h6">
                         Taxonomy
                     </Typography>
                     {provider.taxonomies?.map((taxonomy, idx) => (
@@ -67,7 +66,6 @@ const ProviderDetail = ({ provider, handleClose, open}: ProviderDetailProps) => 
                             {taxonomy.code && ` ${taxonomy.code} - ${taxonomy.desc}`}
                         </Typography>
                     ))}
-                </DialogContentText>
             </DialogContent>
             <Button onClick={handleClose} color="primary">Close</Button>
         </Dialog>

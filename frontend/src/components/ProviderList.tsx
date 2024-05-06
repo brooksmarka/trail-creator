@@ -20,12 +20,11 @@ const ProviderList = ({ data }: ProviderListProps) => {
         setOpen(false);
     }
 
-    console.log("here is the data within providerlist", data)
     return (
         <>
             {!data || data.length === 0 ? (
                 <Typography variant="body1" align="center" sx={{ marginTop: 2 }}>
-                    No data available
+                    No results found.  Please try your search again.
                 </Typography>
             ) : (
                 <ProviderTable data={data} handleClickOpen={handleClickOpen} />

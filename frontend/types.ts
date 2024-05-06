@@ -22,6 +22,12 @@ export interface SearchFormProps {
   onSearch: (params: SearchParams) => void;
 }
 
+export interface PaginationProps {
+  setPage: (updateFn: (currentPage: number) => number) => void;
+  data: ResponseData;
+  page: number;
+}
+
 export interface ProviderData {
     number: string;
     basic: {
@@ -67,9 +73,9 @@ interface Identifier {
 }
 
 export interface ProviderDetailProps {
-    provider: ProviderData;
-    handleClose: () => void;
-    open: boolean;
+  provider: ProviderData;
+  handleClose: () => void;
+  open: boolean;
 }
 
 export interface ProviderTableProps {
