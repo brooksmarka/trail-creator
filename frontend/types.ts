@@ -52,6 +52,10 @@ export interface ProviderData {
     identifiers: Identifier[];
   }
 
+export interface ProviderListProps {
+    data: ProviderData[];
+}
+
 export interface AddressesProps {
   addresses: Address[]
 }

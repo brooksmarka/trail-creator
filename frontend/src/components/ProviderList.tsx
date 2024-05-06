@@ -1,11 +1,8 @@
 import { useState } from 'react'
-import { ProviderData } from '../../types'
+import { ProviderData, ProviderListProps } from '../../types'
 import { Typography } from '@mui/material';
 import ProviderTable from './ProviderTable';
 import ProviderDetail from './ProviderDetail';
-interface ProviderListProps {
-    data: ProviderData[];
-}
 
 const ProviderList = ({ data }: ProviderListProps) => {
     const [open, setOpen] = useState(false);
