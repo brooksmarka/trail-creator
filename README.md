@@ -10,7 +10,7 @@ The NPI Search Application is a full-stack web application that allows users to 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your system:
-- [Node.js](https://nodejs.org/en/) (v14 or higher recommended)
+- [Node.js](https://nodejs.org/en/) (v18.19.1 Recommended)
 - [Yarn](https://yarnpkg.com/)
 
 ## Installation
