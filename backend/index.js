@@ -15,7 +15,7 @@ app.get('/search', async (req, res) => {
     console.log("req query", req.query)
     const url = 'https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/ArcGIS/rest/services/CPWAdminData/FeatureServer/15/query';
 
-    const where = `name=${name}' AND manager='${manager}'`;
+    const where = `name='${name}' AND manager='${manager}'`;
     try {
         const response = await axios.get(url, {
             params: {
