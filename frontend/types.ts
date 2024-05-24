@@ -9,13 +9,8 @@ interface Address {
 }
 
 export interface SearchParams {
-  firstName?: string;
-  lastName?: string;
-  npiNumber?: string;
-  taxonomies?: Taxonomy[];
-  city?: string;
-  state?: string;
-  zip?: string;
+  name?: string;
+  manager?: string;
 }
 
 export interface SearchFormProps {
@@ -28,32 +23,97 @@ export interface PaginationProps {
   page: number;
 }
 
-export interface ProviderData {
-    number: string;
-    basic: {
-      first_name: string;
-      last_name: string;
-      organization_name?: string;
-      status: string;
-      organizational_subpart: string;
-      last_updated: string;
-      certification_date: string;
-      enumeration_date: string;
-      authorized_official_first_name: string;
-      authorized_official_last_name: string;
-      authorized_official_title_or_position: string;
-      authorized_official_telephone_number: string;
-    };
-    enumeration_type: string;
-    practiceLocations: Address[];
-    addresses: Address[];
-    taxonomies?: Taxonomy[];
-    endpoints: Endpoint[];
-    identifiers: Identifier[];
-  }
+export interface SpatialReference {
+  wkid: number;
+  latestWkid: number;
+}
+
+export interface Field {
+  name: string;
+  type: string;
+  alias: string;
+  sqlType: string;
+  length?: number;
+  domain: any;
+  defaultValue: any;
+}
+
+export interface Attributes {
+  OBJECTID: number;
+  feature_id: string;
+  place_id: number;
+  name: string;
+  place_id_1: number;
+  name_1: string;
+  place_id_2: number;
+  name_2: string;
+  place_id_3: number;
+  name_3: string;
+  trail_num: string;
+  surface: string;
+  oneway: string;
+  type: string;
+  hiking: string;
+  horse: string;
+  bike: string;
+  motorcycle: string;
+  atv: string;
+  ohv_gt_50: string;
+  highway_ve: string;
+  dogs: string;
+  access: string;
+  min_elevat: number;
+  max_elevat: number;
+  length_mi_: number;
+  manager: string;
+  INPUT_DATE: number;
+  EDIT_DATE: number;
+  trail_num_: string;
+  trail_num1: string;
+  trail_nu_1: string;
+  snowmobile: string;
+  ski: string;
+  snowshoe: string;
+  plowed: string;
+  groomed: string;
+  groomer_ur: string;
+  url: string;
+  seasonalit: string;
+  seasonal_1: string;
+  seasonal_2: string;
+  seasonal_3: string;
+  Shape__Length: number;
+}
+
+export interface Geometry {
+  paths: number[][][];
+}
+
+export interface Feature {
+  attributes: Attributes;
+  geometry: Geometry;
+}
+
+export interface TrailData {
+  objectIdFieldName: string;
+  uniqueIdField: {
+      name: string;
+      isSystemMaintained: boolean;
+  };
+  globalIdFieldName: string;
+  geometryProperties: {
+      shapeLengthFieldName: string;
+      units: string;
+  };
+  geometryType: string;
+  spatialReference: SpatialReference;
+  fields: Field[];
+  features: Feature[];
+}
+
 
 export interface ProviderListProps {
-    data: ProviderData[];
+    data: TrailData[];
 }
 
 export interface AddressesProps {
@@ -77,18 +137,18 @@ interface Identifier {
 }
 
 export interface ProviderDetailProps {
-  provider: ProviderData;
+  provider: TrailData;
   handleClose: () => void;
   open: boolean;
 }
 
-export interface ProviderTableProps {
-  data: ProviderData[];
-  handleClickOpen: (provider: ProviderData) => void;
+export interface TrailTableProps {
+  data: TrailData[];
+  handleClickOpen: (feature: Feature) => void;
 }
 
 export interface ResponseData {
-  results: ProviderData[];
+  results: TrailData[];
 }
 
 interface Endpoint {

@@ -1,6 +1,6 @@
-# NPI Search Application
+# Trail Creator
 
-The NPI Search Application is a full-stack web application that allows users to search for healthcare providers registered in the National Provider Identifier (NPI) registry. This application uses Node.js with Express for the backend as well as React with Typescript for the frontend.  It is organized into a monorepo using yarn.
+The Trail Creator Application is a full-stack web application that allows users to search for trails and obtain GPS data from those trails.
 
 ## Project Structure
 
@@ -17,7 +17,7 @@ Before you begin, ensure you have the following installed on your system:
 
 1. Clone the repository:
    ```bash
-   git clone `https://github.com/brooksmarka/npi-search-app`
+   git clone `https://github.com/brooksmarka/trail-creator`
    cd npi-search-app
    ```
 2. Install Dependencies:

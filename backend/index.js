@@ -9,21 +9,20 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 
 app.get('/search', async (req, res) => {
-    const { firstName, lastName, npiNumber, taxonomy, city, state, zip, limit, skip } = req.query;
-    const url = 'https://npiregistry.cms.hhs.gov/api/'
+    const { name, manager, outFields, outSR, f } = req.query;
+
+    console.log("Name", name)
+    console.log("req query", req.query)
+    const url = 'https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/ArcGIS/rest/services/CPWAdminData/FeatureServer/15/query';
+
+    const where = `name=${name}' AND manager='${manager}'`;
     try {
         const response = await axios.get(url, {
             params: {
-                first_name: firstName,
-                last_name: lastName,
-                number: npiNumber,
-                taxonomy_description: taxonomy,
-                city,
-                state,
-                postal_code: zip,
-                limit,
-                skip: skip || 0,
-                version: '2.1'
+                where,
+                outFields: outFields || '*',
+                outSR: outSR || '4326',
+                f: f || 'json'
             }
         });
         res.json(response.data);

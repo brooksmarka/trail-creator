@@ -10,24 +10,14 @@ const CustomTableHeader = () => {
 		</TableCell>
 		<TableCell align="center">
 			<Typography variant="subtitle1" sx={{ fontWeight: 'bold', fontSize: '1rem' }}>
-				NPI Number
+				Manager
 			</Typography>
 	  	</TableCell>
 	  	<TableCell align="center">
 			<Typography variant="subtitle1" sx={{ fontWeight: 'bold', fontSize: '1rem' }}>
-		  		Primary Practice Address
+		  		Coordinates
 			</Typography>
 	  	</TableCell>
-	  	<TableCell align="center">
-			<Typography variant="subtitle1" sx={{ fontWeight: 'bold', fontSize: '1rem' }}>
-		  		Phone
-			</Typography>
-	  	</TableCell>
-		<TableCell align="center">
-			<Typography variant="subtitle1" sx={{ fontWeight: 'bold', fontSize: '1rem' }}>
-				Primary Taxonomy
-			</Typography>
-		</TableCell>
 	</TableRow>
   );
 };
