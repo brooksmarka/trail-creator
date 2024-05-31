@@ -18,7 +18,7 @@ Before you begin, ensure you have the following installed on your system:
 1. Clone the repository:
    ```bash
    git clone `https://github.com/brooksmarka/trail-creator`
-   cd npi-search-app
+   cd trail-creator
    ```
 2. Install Dependencies:
     ```bash
